@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 17:45:43 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/24 22:00:06 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/28 18:32:31 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,15 @@ void	pf_initialize(t_printf *pf)
 	pf->precision = -1;
 	pf->modifier = 0;
 	pf->convertion = 0;
+}
+
+int		ft_min(int a, int b)
+{
+	if (a == -1)
+		return (b);
+	if (b == -1)
+		return (a);
+	if (a < b)
+		return (a);
+	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 19:49:37 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/24 23:13:01 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/28 18:08:29 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ t_printf		parsing_convertion(char **format, t_printf pf)
 		pf.precision = 6;
 	if (pf.convertion != 7 && pf.precision == -1)
 		pf.precision = 0;
+	if (pf.plus || pf.space)
+		pf.width--;
 	return (pf);
 }

@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 23:10:59 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/25 00:27:54 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/28 18:05:33 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,18 @@ void	ft_putnbr_hex(long long n, t_printf pf)
 	char	*nbr;
 	int		precision;
 
-	precision = pf.precision;
 	nbr = ft_lltoa_base(n, 16);
+	precision = pf.precision - ft_strlen(nbr);
+	precision = precision < 0 ? 0 : precision;
+	pf.width += pf.sharp ? -1 : 0;
+	!pf.moins ? ft_putwidth(pf.width - ft_strlen(nbr) - precision, pf) : 1;
 	if (pf.sharp)
 	{
 		if (pf.convertion == 5)
 			ft_puts("0X");
 		if (pf.convertion == 4)
 			ft_puts("0x");
-		pf.width -= 1;
 	}
-	!pf.moins ? ft_putwidth(pf.width - ft_strlen(nbr) - precision, pf) : 1;
 	while (pf.precision-- > (int)ft_strlen(nbr))
 		ft_putc('0');
 	(pf.convertion == 5) ? ft_puts(nbr) : ft_puts(to_lower(nbr));

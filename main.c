@@ -4,12 +4,12 @@
 int main()
 {
 	float x;
-	int		i;
+	long		i;
 	char	*str = "salut";
 
-	x = 123.123456789;
-	i = 2147483648;
+	x = 1.42;
+	i = -2147483648;
 
-	ft_printf(	"salut % ld salut\n" , i);
-	printf(		"salut % ld salut\n" , i);
+	ft_printf(	"salut %10.10p salut\n" , str);
+	printf(		"salut %10.10p salut\n" , str);
 }

@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:25:05 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/24 22:37:58 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/28 18:30:12 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char			*ft_lltoa_base(long long n, size_t base);
 int				ft_putc(char c);
 void			ft_putnc(char c, size_t n);
 void			ft_puts(char *str);
+int				ft_min(int a, int b);
 void			ft_put_str(char *str, t_printf pf);
 void			ft_putnbr_float(double n, t_printf pf);
 void			ft_putnbr_int(long long n, t_printf pf);
