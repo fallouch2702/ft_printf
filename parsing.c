@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 19:49:37 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/28 18:08:29 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/29 21:53:59 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_printf		parsing_modifier(char **format, t_printf pf)
 		pf.modifier = MOD_HH;
 	else if (!(ft_strncmp(*format, "h", 1)))
 		pf.modifier = MOD_H;
-	while (**format == 'h' || **format == 'l')
+	while (**format == 'h' || **format == 'l' || **format == 'L')
 		(*format)++;
 	return (parsing_convertion(format, pf));
 }

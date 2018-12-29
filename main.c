@@ -10,6 +10,6 @@ int main()
 	x = 1.42;
 	i = -2147483648;
 
-	ft_printf(	"salut %10.10p salut\n" , str);
-	printf(		"salut %10.10p salut\n" , str);
+	ft_printf(	"%    %\n");
+	printf(		"%    %\n");
 }

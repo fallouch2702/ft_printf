@@ -6,11 +6,18 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 17:45:43 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/28 18:32:31 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/29 21:30:25 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		counter(void)
+{
+	static int		size = 0;
+
+	return (size++);
+}
 
 int		ft_index(char *str, char c)
 {
@@ -45,7 +52,7 @@ void	pf_initialize(t_printf *pf)
 	pf->width = 0;
 	pf->precision = -1;
 	pf->modifier = 0;
-	pf->convertion = 0;
+	pf->convertion = -1;
 }
 
 int		ft_min(int a, int b)

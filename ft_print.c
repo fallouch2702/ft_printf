@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 23:10:59 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/28 18:05:33 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/29 21:37:33 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,26 @@ void	ft_putnbr_octal(long long n, t_printf pf)
 	free(nbr);
 }
 
+void	ft_putnbr_address(void *address, t_printf pf)
+{
+	char	*nbr;
+	long	n;
+	int		precision;
+
+	n = (long)address > 0 ? (long)address : (unsigned int)address;
+	nbr = ft_lltoa_base(n, 16);
+	precision = pf.precision - ft_strlen(nbr);
+	precision = precision < 0 ? 0 : precision;
+	pf.width += pf.sharp ? -1 : 0;
+	!pf.moins ? ft_putwidth(pf.width - ft_strlen(nbr) - precision, pf) : 1;
+	ft_puts("0x");
+	while (pf.precision-- > (int)ft_strlen(nbr))
+		ft_putc('0');
+	ft_puts(to_lower(nbr));
+	pf.moins == 1 ? ft_putwidth(pf.width - ft_strlen(nbr) - precision, pf) : 0;
+	free(nbr);
+}
+
 void	ft_putnbr_hex(long long n, t_printf pf)
 {
 	char	*nbr;
@@ -70,17 +90,8 @@ void	ft_putnbr_hex(long long n, t_printf pf)
 	while (pf.precision-- > (int)ft_strlen(nbr))
 		ft_putc('0');
 	(pf.convertion == 5) ? ft_puts(nbr) : ft_puts(to_lower(nbr));
-	pf.moins ? ft_putwidth(pf.width - ft_strlen(nbr) - precision, pf) : 0;
+	pf.moins == 1 ? ft_putwidth(pf.width - ft_strlen(nbr) - precision, pf) : 0;
 	free(nbr);
-}
-
-void	ft_putnbr_address(void *address, t_printf pf)
-{
-	long		n;
-
-	n = (long)address > 0 ? (long)address : (unsigned int)address;
-	ft_puts("0x");
-	ft_putnbr_hex(n, pf);
 }
 
 void	ft_putnbr_unsigned(long long n, t_printf pf)

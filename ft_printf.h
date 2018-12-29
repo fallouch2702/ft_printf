@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:25:05 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/28 18:30:12 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/29 21:51:36 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define MOD_H  3
 # define MOD_HH 4
 
+# define CONVERTER "diouxXcspf%"
 # define FLAGS "# 0+-"
-# define CONVERTER "diouxXcspf"
 
 typedef struct			s_printf
 {
@@ -42,7 +42,7 @@ typedef struct			s_printf
 int				ft_printf(char *format, ...);
 char			*ft_lltoa(long long n);
 char			*ft_lltoa_base(long long n, size_t base);
-int				ft_putc(char c);
+void			ft_putc(char c);
 void			ft_putnc(char c, size_t n);
 void			ft_puts(char *str);
 int				ft_min(int a, int b);
@@ -53,6 +53,7 @@ void			ft_putnbr_octal(long long n, t_printf pf);
 void			ft_putnbr_hex(long long n, t_printf pf);
 void			ft_putnbr_unsigned(long long n, t_printf pf);
 void			ft_putnbr_address(void *address, t_printf pf);
+void			undefined_flag(t_printf pf);
 void			ft_putwidth(int len, t_printf pf);
 char			*to_lower(char *str);
 int				pf_ft_atoi(char *str);
@@ -64,5 +65,6 @@ t_printf		parsing_width(char **format, t_printf pf);
 t_printf		parsing_precision(char **format, t_printf pf);
 t_printf		parsing_modifier(char **format, t_printf pf);
 t_printf		parsing_convertion(char **format, t_printf pf);
+int				counter(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:24:13 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/24 23:44:19 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/29 21:52:33 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void		ft_printer(char **format, va_list arg)
 	if (pf.convertion == 0 || pf.convertion == 1)
 		ft_putnbr_int(pf.modifier ? mod(pf, arg) : va_arg(arg, int), pf);
 	if (pf.convertion == 2)
-		ft_putnbr_octal(pf.modifier ? mod(pf, arg) : va_arg(arg, unsigned int), pf);
+		ft_putnbr_octal(pf.modifier ? mod(pf, arg) : va_arg(arg, long long), pf);
 	if (pf.convertion == 3)
-		ft_putnbr_unsigned(pf.modifier ? mod(pf, arg) : va_arg(arg, unsigned int), pf);
+		ft_putnbr_unsigned(pf.modifier ? mod(pf, arg) : va_arg(arg, long long), pf);
 	if (pf.convertion == 4)
-		ft_putnbr_hex(pf.modifier ? mod(pf, arg) : va_arg(arg, unsigned int), pf);
+		ft_putnbr_hex(pf.modifier ? mod(pf, arg) : va_arg(arg, long long), pf);
 	if (pf.convertion == 5)
-		ft_putnbr_hex(pf.modifier ? mod(pf, arg) : va_arg(arg, unsigned int), pf);
+		ft_putnbr_hex(pf.modifier ? mod(pf, arg) : va_arg(arg, long long), pf);
 	if (pf.convertion == 6)
 		ft_putc(va_arg(arg, int));
 	if (pf.convertion == 7)
@@ -51,6 +51,15 @@ void		ft_printer(char **format, va_list arg)
 		ft_putnbr_address(va_arg(arg, void *), pf);
 	if (pf.convertion == 9)
 		ft_putnbr_float(va_arg(arg, double), pf);
+	if (pf.convertion == 10)
+		undefined_flag(pf);
+}
+
+void		undefined_flag(t_printf pf)
+{
+	!pf.moins ? ft_putwidth(pf.width - 1, pf) : 1;
+	ft_putc('%');
+	pf.moins ? ft_putwidth(pf.width - 1, pf): 1;
 }
 
 int			ft_printf(char *format, ...)
@@ -60,12 +69,7 @@ int			ft_printf(char *format, ...)
 	va_start(arg, format);
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1) == '%')
-		{
-			ft_putc('%');
-			format += 2;
-		}
-		else if (*format == '%')
+		if (*format == '%')
 		{
 			format++;
 			ft_printer(&format, arg);
@@ -73,5 +77,5 @@ int			ft_printf(char *format, ...)
 		else
 			ft_putc(*format++);
 	}
-	return (ft_putc(0));
+	return (counter());
 }

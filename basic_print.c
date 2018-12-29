@@ -6,19 +6,16 @@
 /*   By: fallouch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 20:05:54 by fallouch          #+#    #+#             */
-/*   Updated: 2018/12/28 18:33:44 by fallouch         ###   ########.fr       */
+/*   Updated: 2018/12/29 21:48:10 by fallouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_putc(char c)
+void		ft_putc(char c)
 {
-	static int n = 0;
-
+	counter();
 	write(1, &c, 1);
-	n++;
-	return (n);
 }
 
 void		ft_puts(char *str)
